@@ -1,0 +1,15 @@
+{
+    "i18n":{
+        "fr": "Frantsay",
+        "mg": "Malagasy",
+        "en": "Anglisy"
+    },
+    "LOGIN": {
+        "langue": "Fiteny hampiasaina",
+        "slogan": "Fampianarana avo lenta",
+        "compte": "Kaonty",
+        "reserver": "Mila ramse",
+        "aproximite": "Manodidina anao",
+        "apropos": "Mombamomba"
+    }
+}

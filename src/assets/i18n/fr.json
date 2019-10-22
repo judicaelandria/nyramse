@@ -1,0 +1,15 @@
+{
+    "i18n":{
+        "fr": "Français",
+        "mg": "Malgache",
+        "en": "Anglais"
+    },
+    "LOGIN": {
+        "langue": "Langue de l'application",
+        "slogan": "Pour une éducation de qualité",
+        "compte": "Compte",
+        "reserver": "Réserver",
+        "aproximite": "A proximité",
+        "apropos": "A propos"
+    }
+}

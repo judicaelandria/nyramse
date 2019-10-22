@@ -1,5 +1,7 @@
 {
   "name": "nyramse",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

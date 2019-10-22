@@ -1,0 +1,45 @@
+{
+    "ramses": [
+        {
+            "nom": "Nom du ramse",
+            "photo": "Photo",
+            "disponible": "disponible",
+            "long": 47.480062,
+            "lat": -18.848355,
+            "distance": 12,
+            "temps": 14,
+            "rating": 5
+        },
+        
+        {
+            "nom": "Nom du ramse 2",
+            "photo": "Photo",
+            "disponible": "disponible",
+            "long": 47.485262,
+            "lat": -18.848430,
+            "distance": 12,
+            "temps": 14,
+            "rating": 2
+        },
+        {
+            "nom": "Nom du ramse 3",
+            "photo": "MA",
+            "disponible": "disponible",
+            "long": 47.380145,
+            "lat": -18.848327,
+            "distance": 12,
+            "temps": 14,
+            "rating": 3
+        },
+        {
+            "nom": "Nom du ramse 4",
+            "photo": "Photo",
+            "disponible": "disponible",
+            "long": 47.450162,
+            "lat": -18.818353,
+            "distance": 12,
+            "temps": 14,
+                "rating": 4
+        }
+    ]
+}

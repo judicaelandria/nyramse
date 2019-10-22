@@ -1,0 +1,16 @@
+{
+    "properties" : [
+    {
+        "city": "NextA",
+        "state" : "Tananarive",
+        "long": 47.480187,
+        "lat": -18.848475
+    },
+    {
+        "city": "Mpianatra",
+        "state" : "Tananarivo",
+        "long": 47.476029,
+        "lat": -18.843135
+    }
+    ]
+ }

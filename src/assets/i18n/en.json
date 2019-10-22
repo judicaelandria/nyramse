@@ -1,0 +1,15 @@
+{
+    "i18n":{
+        "fr": "French",
+        "mg": "Malagasy",
+        "en": "English"
+    },
+    "LOGIN": {
+        "langue": "Application language",
+        "slogan": "For the best education ",
+        "compte": "Account",
+        "reserver": "Booking",
+        "aproximite": "Arround",
+        "apropos": "About"
+    }
+}

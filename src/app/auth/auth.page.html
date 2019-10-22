@@ -1,0 +1,121 @@
+<ion-header style="background: url(assets/register.fw.png); background-size: cover">
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="login"></ion-back-button>
+  </ion-buttons>
+</ion-header>
+
+<ion-content>
+
+  <div id="profile-bg" [ngStyle]="{'background-image': 'url(assets/register.fw.png)'}"></div>
+  <br>
+
+  <div [ngSwitch]="segment" id="content">
+    <ion-segment class="segment" color="chalk" [(ngModel)]="segment" mode="md">
+      <ion-segment-button class="ion-text-capitalize" value="1">
+        <ion-card-title><strong>Se connecter</strong></ion-card-title>
+      </ion-segment-button>
+      <ion-segment-button class="ion-text-capitalize" value="2">
+        <ion-card-title><strong>S'inscrire</strong></ion-card-title>
+      </ion-segment-button>
+    </ion-segment>
+
+    <div class="ion-padding-horizontal" *ngSwitchCase="2">
+        <ion-item lines="none">
+          <h1>Inscription</h1>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="contact"></ion-icon>
+          <ion-label position="floating">Nom</ion-label>
+          <ion-input clearInput type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="contact"></ion-icon>
+          <ion-label position="floating">Prénom</ion-label>
+          <ion-input clearInput type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="call"></ion-icon>
+          <ion-label position="floating">Téléphone</ion-label>
+          <ion-input clearInput type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="mail"></ion-icon>
+          <ion-label position="floating">Adresse email</ion-label>
+          <ion-input clearInput type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="school"></ion-icon>
+          <ion-label>Type du compte</ion-label>
+          <ion-select interface="popover" multiple="false" placeholder="Type">
+            <ion-select-option value="peperoni">Ramsé</ion-select-option>
+            <ion-select-option value="hawaii">Etudiant</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="lock"></ion-icon>
+          <ion-label position="floating">Mot de passe</ion-label>
+          <ion-input clearInput type="password"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="lock"></ion-icon>
+          <ion-label position="floating">Confirmez votre mot de passe</ion-label>
+          <ion-input clearInput type="password"></ion-input>
+        </ion-item>
+  
+        <div class="ion-margin">
+          <ion-button color="chalk" class="ion-text-capitalize" fill="solid" size="large" (click)="onClick()"
+            expand="full" shape="round">
+            <strong>S'inscrire</strong>
+          </ion-button>
+        </div>
+  
+      </div>
+
+    <div class="ion-padding-horizontal" *ngSwitchCase="1">
+      <ion-item lines="none">
+        <h1>Authentification</h1>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="contact"></ion-icon>
+        <ion-label position="floating">Adresse email</ion-label>
+        <ion-input clearInput type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="lock"></ion-icon>
+        <ion-label position="floating">Mot de passe</ion-label>
+        <ion-input clearInput type="password"></ion-input>
+      </ion-item>
+      <p></p>
+      <div class="ion-margin-horizontal animated fadeInUp delay-1s">
+        <ion-button color="chalk" class="ion-text-capitalize" fill="solid" size="large" (click)="onClick()"
+          expand="full" shape="round">
+          <strong>Se connecter</strong>
+        </ion-button>
+        <ion-button color="medium" class="ion-text-capitalize" fill="clear" size="large" (click)="onClick()"
+          expand="full" shape="round">
+          <strong>Mot de passe oublié ?</strong>
+        </ion-button>
+      </div>
+      
+      <ion-fab class="animated fadeInUp delay-2s" vertical="bottom" horizontal="center" slot="fixed">
+        <ion-fab-button color="light" size="large">
+          <ion-icon name="lock"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="start">
+          <ion-fab-button color="primary">
+            <ion-icon name="logo-facebook"></ion-icon>
+          </ion-fab-button>
+        </ion-fab-list>
+        <ion-fab-list side="end">
+          <ion-fab-button color="danger">
+            <ion-icon name="logo-google"></ion-icon>
+          </ion-fab-button>
+        </ion-fab-list>
+      </ion-fab>
+    </div>
+
+
+  </div>
+
+
+</ion-content>
