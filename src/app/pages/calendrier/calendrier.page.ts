@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject, LOCALE_ID } from '@angular/core';
+import { CalendarComponent } from 'ionic2-calendar/calendar';
+import { AlertController } from '@ionic/angular';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-calendrier',
@@ -6,27 +9,84 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./calendrier.page.scss'],
 })
 export class CalendrierPage implements OnInit {
+
+  event = {
+    title: '',
+    desc: '',
+    startTime: '',
+    endTime: '',
+    allDay: false
+  }
+
+  minDate = new Date().toISOString();
+
   eventSource = [];
 
   calendar = {
-    mode: 'month',
+    mode: 'week',
     currentDate: new Date(),
   };
   selectedDate = new Date();
-  constructor() {
+  viewTitle = '';
+
+  @ViewChild(CalendarComponent, {static: false}) myCal: CalendarComponent;
+
+  constructor(private alertCtrl: AlertController, @Inject(LOCALE_ID)private locale) {
     
    }
-   onViewTitleChanged(title) {
-    console.log(title);
+  addEvent() {
+    let eventCopy = {
+      title: this.event.title,
+      startTime: new Date(this.event.startTime),
+      endTime: new Date(this.event.endTime),
+      allDay: this.event.allDay,
+      desc: this.event.desc
+    }
+
+    if(eventCopy.allDay) {
+      let start = eventCopy.startTime;
+      let end = eventCopy.endTime;
+
+      eventCopy.startTime = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate()));
+      eventCopy.endTime = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate() + 1));
+    }
+
+    this.eventSource.push(eventCopy);
+    this.myCal.loadEvents();
+    this.resetEvent();
   }
 
-  onEventSelected(event) {
-    console.log('Event selected:' + event.startTime + '-' + event.endTime + ',' + event.title);
+  changeMode(mode) {
+    this.calendar.mode = mode;
+  }
+
+  back() {
+    var swiper = document.querySelector('.swiper-container')['swiper'];
+    swiper.slidePrev();
+  }
+
+  next() {
+    var swiper = document.querySelector('.swiper-container')['swiper'];
+    swiper.slideNext();
+  }
+  async onEventSelected(event) {
+    let start = formatDate(event.startTime, 'medium', this.locale);
+    let end = formatDate(event.endTime, 'medium', this.locale);
+ 
+    const alert = await this.alertCtrl.create({
+      header: event.title,
+      subHeader: event.desc,
+      message: 'From: ' + start + '<br><br>To: ' + end,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
   onTimeSelected(ev) {
-    console.log('Selected time: ' + ev.selectedTime + ', hasEvents: ' +
-      (ev.events !== undefined && ev.events.length !== 0) + ', disabled: ' + ev.disabled);
+    let selected = new Date(ev.selectedTime);
+    this.event.startTime = selected.toISOString();
+    selected.setHours(selected.getHours() + 1);
+    this.event.endTime = (selected.toISOString());
   }
 
   onCurrentDateChanged(event: Date) {
@@ -36,7 +96,22 @@ export class CalendrierPage implements OnInit {
   onRangeChanged(ev) {
     console.log('range changed: startTime: ' + ev.startTime + ', endTime: ' + ev.endTime);
   }
+
+  onViewTitleChanged(title) {
+    this.viewTitle = title;
+  }
+
+  resetEvent() {
+    this.event = {
+      title: '',
+      desc: '',
+      startTime: new Date().toISOString(),
+      endTime: new Date().toISOString(),
+      allDay: false
+    }
+  }
   ngOnInit() {
+    this.resetEvent();
   }
 
 }
