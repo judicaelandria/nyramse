@@ -42,10 +42,11 @@ export class ReservationPage implements OnInit {
   ionViewDidEnter() {
     this.map = new Map('map').setView([-18.848475, 47.480187], 13);
 
-    tileLayer('//{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-      attribution: 'donn&eacute;es &copy; <a href="//osm.org/copyright">OpenStreetMap</a><a href="//openstreetmap.mg">OSM Madagascar</a>',
-      minZoom: 5,
-      maxZoom: 50
+    tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+      attribution: '',
+      accessToken: 'pk.eyJ1IjoiamFyaXgiLCJhIjoiY2p5NnQ4amNoMDQ2NzNkbGNkbGhsbmIybSJ9.gPOanzVbJSJFETL1fEco0A',
+      id: 'mapbox.streets',
+      zoom: 18
     }).addTo(this.map);
 
     fetch('./assets/data/eleves.json').then(res => res.json())
