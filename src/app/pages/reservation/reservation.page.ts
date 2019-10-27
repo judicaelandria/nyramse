@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Map, tileLayer, marker, icon, Marker,Routing, latLng  } from 'leaflet';
 const iconBlueRetinaUrl = 'assets/leaflet/marker-icon-2x.fw.png';
 const iconBlueUrl = 'assets/leaflet/marker-icon-2x.fw.png';
-const iconYouRetinaUrl = 'assets/leaflet/iconYou.fw.png';
-const iconYouUrl = 'assets/leaflet/iconYou.fw.png';
+const iconYouRetinaUrl = 'assets/leaflet/pulse.gif';
+const iconYouUrl = 'assets/leaflet/pulse.gif';
 const shadowUrl = 'assets/leaflet/marker-shadow.png';
 import 'leaflet-routing-machine';
 
@@ -60,7 +60,7 @@ export class ReservationPage implements OnInit {
   leafletMap() {
     let mrk;
     Marker.prototype.options.icon = iconYou;
-    mrk = marker([-18.848475,  47.489999], iconYou).addTo(this.map)
+    mrk = marker([-18.848334, 47.479791], iconYou).addTo(this.map)
       .bindPopup("C'est vous", 'mapContent')
       .openPopup();
   
@@ -76,6 +76,16 @@ export class ReservationPage implements OnInit {
     this.map.remove();
   }
 
+  myPosition(){
+    this.map.setView([-18.848647, 47.480242], 18, {
+      "animate": true,
+      "pan": {
+        "duration": 1
+      }
+    });
+  }
+
+
   drawLine() {
     new Routing.Control({
       showAlternatives: false,
@@ -85,7 +95,7 @@ export class ReservationPage implements OnInit {
       routeWhileDragging: true,
       waypoints: [
         latLng(-18.848475,  47.480187),
-          latLng(-18.848475,  47.489999)
+          latLng(-18.848334, 47.479791)
       ]
     }).addTo(this.map)
   }

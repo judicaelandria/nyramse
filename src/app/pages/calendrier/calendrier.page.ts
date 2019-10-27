@@ -12,7 +12,6 @@ export class CalendrierPage implements OnInit {
 
   event = {
     title: '',
-    desc: '',
     startTime: '',
     endTime: '',
     allDay: false
@@ -35,25 +34,28 @@ export class CalendrierPage implements OnInit {
     
    }
   addEvent() {
-    let eventCopy = {
-      title: this.event.title,
-      startTime: new Date(this.event.startTime),
-      endTime: new Date(this.event.endTime),
-      allDay: this.event.allDay,
-      desc: this.event.desc
-    }
-
-    if(eventCopy.allDay) {
-      let start = eventCopy.startTime;
-      let end = eventCopy.endTime;
-
-      eventCopy.startTime = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate()));
-      eventCopy.endTime = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate() + 1));
-    }
-
-    this.eventSource.push(eventCopy);
-    this.myCal.loadEvents();
-    this.resetEvent();
+    this.presentLoading();
+    setTimeout(() => {
+      this.presentToastWithOptions("Ajout avec success");
+      let eventCopy = {
+        title: this.event.title,
+        startTime: new Date(this.event.startTime),
+        endTime: new Date(this.event.endTime),
+        allDay: this.event.allDay
+      }
+  
+      if(eventCopy.allDay) {
+        let start = eventCopy.startTime;
+        let end = eventCopy.endTime;
+  
+        eventCopy.startTime = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate()));
+        eventCopy.endTime = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate() + 1));
+      }
+  
+      this.eventSource.push(eventCopy);
+      this.myCal.loadEvents();
+      this.resetEvent();
+    }, 1000);
   }
 
   changeMode(mode) {
@@ -76,7 +78,7 @@ export class CalendrierPage implements OnInit {
     const alert = await this.alertCtrl.create({
       header: event.title,
       subHeader: event.desc,
-      message: 'From: ' + start + '<br><br>To: ' + end,
+      message: 'De: ' + start + '<br><br>au: ' + end,
       buttons: ['OK']
     });
     alert.present();
@@ -104,7 +106,6 @@ export class CalendrierPage implements OnInit {
   resetEvent() {
     this.event = {
       title: '',
-      desc: '',
       startTime: new Date().toISOString(),
       endTime: new Date().toISOString(),
       allDay: false
@@ -118,16 +119,16 @@ export class CalendrierPage implements OnInit {
     this.presentLoading();
     setTimeout(() => {
       this.NavController.navigateRoot('login');
-      this.presentToastWithOptions();
+      this.presentToastWithOptions("Vous êtes déconnecté");
     }, 1000);
   }
 
-  async presentToastWithOptions() {
+  async presentToastWithOptions(message) {
     const toast = await this.toastController.create({
       animated: true,
       color: 'tertiary',
       duration: 2000,
-      header: 'Vous êtes déconnecté',
+      header: message,
       mode: 'ios',
       position: 'bottom'
     });
