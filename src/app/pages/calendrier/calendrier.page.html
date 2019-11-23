@@ -1,10 +1,11 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>calendrier</ion-title>
+  <ion-toolbar color="primary"> 
+    <ion-title>Calendrier</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+  <h2 class="cardBorder"><strong>Mes Emplois su temps</strong></h2>
   <calendar [eventSource]="eventSource"
   [calendarMode]="calendar.mode"
   [currentDate]="calendar.currentDate"
@@ -15,4 +16,10 @@
   (onTimeSelected)="onTimeSelected($event)"
   step="30">
   </calendar>
+
+  <ion-fab (click)="logout()" class="fabLogout" vertical="top" horizontal="end" slot="fixed">
+      <ion-fab-button color="primary">
+        <ion-icon name="exit"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
 </ion-content>

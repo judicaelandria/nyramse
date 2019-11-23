@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastController, LoadingController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-calendrier',
@@ -13,7 +14,7 @@ export class CalendrierPage implements OnInit {
     currentDate: new Date(),
   };
   selectedDate = new Date();
-  constructor() {
+  constructor(private NavController:NavController, public toastController: ToastController, public loadingController: LoadingController) {
     
    }
    onViewTitleChanged(title) {
@@ -38,5 +39,33 @@ export class CalendrierPage implements OnInit {
   }
   ngOnInit() {
   }
+
+  logout(){
+    this.presentLoading();
+    setTimeout(() => {
+      this.NavController.navigateRoot('login');
+      this.presentToastWithOptions();
+    }, 1000);
+  }
+
+  async presentToastWithOptions() {
+    const toast = await this.toastController.create({
+      animated: true,
+      color: 'tertiary',
+      duration: 2000,
+      header: 'Vous êtes déconnecté',
+      mode: 'ios',
+      position: 'bottom'
+    });
+    toast.present();
+  }
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      duration: 1000,
+      spinner: 'bubbles'
+    });
+    await loading.present();
+  }
+
 
 }

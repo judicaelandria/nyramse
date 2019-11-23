@@ -1,0 +1,14 @@
+{
+    "eleves": [
+        {
+            "nom": "Rija",
+            "prenom": "Nifaliana",
+            "contact": "034 54 555 12",
+            "photo": "assets/user.png",
+            "long": 47.480187,
+            "lat": -18.848475,
+            "distance": "0.10",
+            "temps": 1
+        }
+    ]
+}
