@@ -59,7 +59,7 @@ export class ReservationPage implements OnInit {
   leafletMap() {
     let mrk;
     Marker.prototype.options.icon = iconYou;
-    mrk = marker([-18.848475,  47.480200], iconYou).addTo(this.map)
+    mrk = marker([-18.848475,  47.489999], iconYou).addTo(this.map)
       .bindPopup("C'est vous", 'mapContent')
       .openPopup();
   
@@ -84,7 +84,7 @@ export class ReservationPage implements OnInit {
       routeWhileDragging: true,
       waypoints: [
         latLng(-18.848475,  47.480187),
-          latLng(-18.848475,  47.480200)
+          latLng(-18.848475,  47.489999)
       ]
     }).addTo(this.map)
   }

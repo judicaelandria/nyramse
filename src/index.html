@@ -7,7 +7,8 @@
 
   <base href="/" />
 
-  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport"
+    content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="format-detection" content="telephone=no" />
   <meta name="msapplication-tap-highlight" content="no" />
 
@@ -31,12 +32,30 @@
       display: flex;
       justify-content: space-between;
     }
+
     .header-md:after {
       background: none !important;
-  }
+    }
+
     .cardBorder {
       border-left: 5px solid var(--ion-color-chalk) !important;
       padding: 10px 20px;
+    }
+
+    .leaflet-routing-container {
+      display: none !important;
+    }
+
+    .leaflet-routing-container .leaflet-bar {
+      display: none !important;
+    }
+
+    .leaflet-routing-container .leaflet-bar .leaflet-routing-collapsible {
+      display: none !important;
+    }
+
+    .leaflet-routing-container .leaflet-bar .leaflet-routing-collapsible .leaflet-control {
+      display: none !important;
     }
   </style>
 </head>
